@@ -39,15 +39,15 @@ endtask
    task automatic reset_gen(int clk_idx);
     	int count,on_delay,off_delay;
        on_delay  = $urandom_range(10,100);
-     	 $display("SUDA RST 59");
+     	 `uvm_info(get_type_name(),$sformatf("RESET ASSERTED"),UVM_NONE)
        clk_rst_vif[clk_idx].rstN = 0;
        #(on_delay) clk_rst_vif[clk_idx].rstN = 1;
-     $display("%0tSUDA RST 62",$time);
+		 `uvm_info(get_type_name(),$sformatf("RESET DE-ASSERTED"),UVM_NONE)		 
   endtask
   
   
   task clk_gen(int clk_idx);
-	 $display("period %p",real'(real'(cfg.clk_period[clk_idx])/2));
+	 `uvm_info(get_type_name(),$sformatf("CLK PERIOD FOR CLK INST %0d NS %p",clk_idx,real'(real'(cfg.clk_period[clk_idx])/2)),UVM_NONE)
 	 clk_rst_vif[clk_idx].clk = 0;
     forever #(real'(real'(cfg.clk_period[clk_idx])/2)) clk_rst_vif[clk_idx].clk =~clk_rst_vif[clk_idx].clk;
   endtask  
