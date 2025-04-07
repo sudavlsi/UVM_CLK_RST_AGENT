@@ -1,7 +1,6 @@
 `timescale 1ns / 1ps
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-`include "clk_rst_pkg.svh"
 `include "clk_rst_test.sv"
 module clk_rst_tb(
 
@@ -20,8 +19,7 @@ module clk_rst_tb(
 initial begin
 static string uvm_testname = "clk_rst_test" ;
 
-	$display("SUDA");
-		$value$plusargs("+UVM_TESTNAME=%0s",uvm_testname);
+	void'($value$plusargs("+UVM_TESTNAME=%0s",uvm_testname));
 	run_test(uvm_testname);
 end
     
