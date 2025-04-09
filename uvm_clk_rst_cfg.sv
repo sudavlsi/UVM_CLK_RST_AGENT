@@ -1,5 +1,5 @@
-class clk_rst_cfg extends uvm_object;
-   `uvm_object_utils(clk_rst_cfg)
+class uvm_clk_rst_cfg extends uvm_object;
+   `uvm_object_utils(uvm_clk_rst_cfg)
    rand  bit [31:0] num_clks;
    rand  bit [31:0] clk_period[]; //IN TERMS OF NS
    

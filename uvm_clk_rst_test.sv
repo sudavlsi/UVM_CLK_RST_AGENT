@@ -1,10 +1,10 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-import clk_rst_pkg::*;
+import uvm_clk_rst_pkg::*;
 
-class clk_rst_test extends uvm_test;
-   `uvm_component_utils(clk_rst_test)
-   clk_rst_agent agent;
+class uvm_clk_rst_test extends uvm_test;
+   `uvm_component_utils(uvm_clk_rst_test)
+   uvm_clk_rst_agent agent;
 
    function new(string name, uvm_component parent);
       super.new(name, parent);
@@ -18,7 +18,7 @@ class clk_rst_test extends uvm_test;
 
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
-      agent = clk_rst_agent::type_id::create("agent", this);
+      agent = uvm_clk_rst_agent::type_id::create("agent", this);
    endfunction
 
    function void connect_phase(uvm_phase phase);

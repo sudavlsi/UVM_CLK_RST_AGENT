@@ -1,4 +1,4 @@
-interface clk_rst_intf#( BIT_WIDTH = 1 , NUM_STAGES = 2 );
+interface uvm_clk_rst_intf#( BIT_WIDTH = 1 , NUM_STAGES = 2 );
    logic clk, rstN, sync_rstN;
    logic [BIT_WIDTH - 1 : 0] sync_flop [0 : NUM_STAGES - 1];
 
