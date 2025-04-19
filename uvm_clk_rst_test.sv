@@ -37,6 +37,10 @@ class uvm_clk_rst_test extends uvm_test;
       `uvm_info(get_type_name(), "#######################", UVM_NONE)
       uvm_top.print_topology();
       #100us;
+      for(int clk_idx=0; clk_idx < agent.cfg.num_clks ; clk_idx++) begin
+         agent.reset_gen(clk_idx);
+      end
+      #100us;
       phase.drop_objection(phase);
    endtask
 
