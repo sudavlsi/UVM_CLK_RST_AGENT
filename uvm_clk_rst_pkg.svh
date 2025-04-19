@@ -2,7 +2,7 @@
    `define CLK_RST_PKG
    package uvm_clk_rst_pkg;
       timeunit 1ns;
-      timeprecision 1ns;
+      timeprecision 1ps;
       import uvm_pkg::*;
       `include "uvm_macros.svh"
       `include "uvm_clk_rst_cfg.sv"
