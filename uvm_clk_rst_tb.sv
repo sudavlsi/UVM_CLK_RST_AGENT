@@ -4,12 +4,12 @@ import uvm_pkg::*;
 `include "uvm_clk_rst_test.sv"
 
 module uvm_clk_rst_tb();
-   localparam NUM_CLKS = 10;
+   localparam NUM_CLKS = 100;
    uvm_clk_rst_intf uvm_clk_rst_intf_inst[NUM_CLKS](.*);
 
    genvar uvm_clk_rst_idx;
    generate
-      for (uvm_clk_rst_idx = 0; uvm_clk_rst_idx < 10; uvm_clk_rst_idx++) begin
+      for (uvm_clk_rst_idx = 0; uvm_clk_rst_idx < NUM_CLKS; uvm_clk_rst_idx++) begin
          initial begin
             uvm_config_db#(virtual uvm_clk_rst_intf)::set(uvm_root::get(), "*", $sformatf("uvm_clk_rst_intf_%0d", uvm_clk_rst_idx), uvm_clk_rst_intf_inst[uvm_clk_rst_idx]);
          end
