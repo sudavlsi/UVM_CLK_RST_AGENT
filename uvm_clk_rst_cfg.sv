@@ -5,7 +5,7 @@ class uvm_clk_rst_cfg extends uvm_object;
    rand  bit        sync_deassertion[],sync_assertion[];
    rand  bit [31:0] clk_jitter[]; //IN TERMS OF PPM
    
-   constraint num_clks_cons { num_clks != 0; num_clks <= 1; }
+   constraint num_clks_cons { num_clks != 0; num_clks <= 100; }
 
    constraint clk_period_size_cons { clk_period.size()       == num_clks; 
                                      sync_deassertion.size() == num_clks;
@@ -16,8 +16,8 @@ class uvm_clk_rst_cfg extends uvm_object;
    constraint clk_period_cons {
       foreach (clk_period[i]) {
          clk_period[i] != 0;
-         clk_period[i] inside {[10:10]};
-         clk_jitter[i] inside {[100:300]};
+         clk_period[i] inside {[10:500]};
+         clk_jitter[i] inside {[100:500]};
       }
    }
 
