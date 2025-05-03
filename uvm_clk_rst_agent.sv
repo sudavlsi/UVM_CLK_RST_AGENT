@@ -110,7 +110,7 @@ class uvm_clk_rst_agent extends uvm_agent;
       super.report_phase(phase);
       for(int clk_idx = 0; clk_idx < cfg.num_clks; clk_idx++) begin 
          avg_jitter[clk_idx] = real'((avg_clk_period[clk_idx] - real'(cfg.clk_period[clk_idx])) / real'(cfg.clk_period[clk_idx])) * 100;
-         `uvm_info(get_type_name(), $sformatf("CLK PERIOD MONITOR EXPECTED %f ACTUAL %f expected JITTER %0f Total JITTER %0fPercent ", 
+         `uvm_info(get_type_name(), $sformatf("CLK PERIOD MONITOR EXPECTED %f ACTUAL %f expected JITTER %0f%% Total JITTER %0f%% ", 
                      cfg.clk_period[clk_idx], avg_clk_period[clk_idx], cfg.clk_jitter[clk_idx], avg_jitter[clk_idx]), UVM_NONE)
       end
    endfunction
