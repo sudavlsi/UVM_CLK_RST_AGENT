@@ -41,7 +41,24 @@ class uvm_clk_rst_test extends uvm_test;
          agent.reset_gen(clk_idx);
       end
       #100us;
+      
       phase.drop_objection(phase);
    endtask
+
+   function void report_phase(uvm_phase phase);
+      uvm_report_server server;
+      super.report_phase(phase);
+      server = uvm_report_server::get_server();
+
+      if ((server.get_severity_count(UVM_FATAL) + server.get_severity_count(UVM_ERROR)) > 0) begin
+         $display(" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ");
+         $display(" $$$$$$$$$       TEST FAILED       $$$$$$$ ");
+         $display(" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ");
+      end else begin
+         $display(" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ");
+         $display(" $$$$$$$$$       TEST PASSED       $$$$$$$ ");
+         $display(" $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ");
+      end
+   endfunction
 
 endclass
